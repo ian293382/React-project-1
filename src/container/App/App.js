@@ -9,11 +9,36 @@ import {
   StyledSignInButton,
   StyledAppHeaderContent,
   StyledExploreButton,
-} from './App.styled'
+} from './App.styled' ;
+
+import {
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom';
 
 import About from '../About/About';
 import Recipes from '../Recipes/Recipes';
 import Cooking from '../Cooking/Cooking';
+
+function Index() {
+  return (
+    <React.Fragment>
+      <div>
+        <div className='content-title'>Let's Get Cookie</div>
+        <div className='content-subtitle'>
+          <div>Explore the best recipes from around the World.</div>
+          <div>Make cooking enjoyable again. </div>
+        </div>
+        <StyledExploreButton>Explore Recipes</StyledExploreButton>
+      </div>
+      
+      <div> 
+        <img src={Board_1} alt="Chess"/>
+      </div>
+    </React.Fragment>
+ 
+  )}
 
 function App() {
   const [searchStart, setIsSearchStart] = React.useState(false)
@@ -23,6 +48,7 @@ function App() {
     const pn = window.location.pathname
     setPathname(pn)
   },[])
+
 
   return (
     <div>
@@ -40,10 +66,11 @@ function App() {
                 display: 'flex',
                 listStyle: 'none',
               }}>
-                <li><a href='/recipes'>Recipes</a></li>
-                <li>Dinner TV</li>
-                <li><a href='/cooking'>Cooking School</a></li>
-                <li><a href='/about'>About</a></li>
+                <li><Link to='/recipes'>Recipes</Link></li>
+                {/* <li><Link to='/link'>TV</Link></li> */}
+                <li>TV</li>
+                <li><Link to='/cooking'>Cooking School</Link></li>
+                <li><Link to='/about'>About</Link></li>
               </ul>
             </div>
             <div>
@@ -52,37 +79,12 @@ function App() {
           </div>
         </StyledAppHeaderNavigationBar>
         <StyledAppHeaderContent>
-          {pathname === '/' &&
-            <React.Fragment>
-              <div>
-                <div className='content-title'>Let's Get Cookie</div>
-                  <div className='content-subtitle'>
-                    <div>Explore the best recipes from around the World.</div>
-                    <div>Make cooking enjoyable again. </div>
-                  </div>
-                  <StyledExploreButton>Explore Recipes</StyledExploreButton>
-              </div>
-               
-              <div>
-                  {/* <img src={Chess} /> */}
-              
-                <img src={Board_1} alt="Chess"/>
-              </div>
-           
-              </React.Fragment>
-            }
-            {
-              pathname === '/about' && <About/>
-            }
-
-            {
-              pathname === '/recipes' && <Recipes/>
-            }
-
-            {
-              pathname === '/cooking' && <Cooking/>
-            }
-
+          <Routes>
+            <Route exact path="/" element={<Index />} />
+            <Route exact path='/about' element={<About />} />
+            <Route exact path='/recipes' element={<Recipes />} />
+            <Route exact path='cooking' element={<Cooking />} />
+          </Routes>
         </StyledAppHeaderContent>
    
       </StyledAppHeader>
