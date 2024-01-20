@@ -11,14 +11,25 @@ import {
   StyledExploreButton,
 } from './App.styled'
 
+import About from '../About/About';
+import Recipes from '../Recipes/Recipes';
+import Cooking from '../Cooking/Cooking';
+
 function App() {
   const [searchStart, setIsSearchStart] = React.useState(false)
+  const [pathname, setPathname] = React.useState('/')
+
+  React.useEffect(() => {
+    const pn = window.location.pathname
+    setPathname(pn)
+  },[])
+
   return (
     <div>
       <StyledAppHeader>
         <StyledAppHeaderNavigationBar>
           <div>
-            <img src={Logo} />
+            <a href='/'><img src={Logo} /></a>
           </div>
           <div className='navigation-list'>
             <div className='search'><i onClick={() => setIsSearchStart(!searchStart)} className="fas fa-search"></i>
@@ -29,10 +40,10 @@ function App() {
                 display: 'flex',
                 listStyle: 'none',
               }}>
-                <li>Recipes</li>
+                <li><a href='/recipes'>Recipes</a></li>
                 <li>Dinner TV</li>
-                <li>Cooking School</li>
-                <li>About</li>
+                <li><a href='/cooking'>Cooking School</a></li>
+                <li><a href='/about'>About</a></li>
               </ul>
             </div>
             <div>
@@ -41,20 +52,37 @@ function App() {
           </div>
         </StyledAppHeaderNavigationBar>
         <StyledAppHeaderContent>
-          <div>
-            <div className='content-title'>Let's Get Cookie</div>
-            <div className='content-subtitle'>
-              <div>Explore the best recipes from around the World.</div>
-              <div>Make cooking enjoyable again. </div>
-            </div>
-            <StyledExploreButton>Explore Recipes</StyledExploreButton>
-            
-          </div>
-          <div>
-            {/* <img src={Chess} /> */}
-          
-            <img src={Board_1} alt="Chess"/>
-          </div>
+          {pathname === '/' &&
+            <React.Fragment>
+              <div>
+                <div className='content-title'>Let's Get Cookie</div>
+                  <div className='content-subtitle'>
+                    <div>Explore the best recipes from around the World.</div>
+                    <div>Make cooking enjoyable again. </div>
+                  </div>
+                  <StyledExploreButton>Explore Recipes</StyledExploreButton>
+              </div>
+               
+              <div>
+                  {/* <img src={Chess} /> */}
+              
+                <img src={Board_1} alt="Chess"/>
+              </div>
+           
+              </React.Fragment>
+            }
+            {
+              pathname === '/about' && <About/>
+            }
+
+            {
+              pathname === '/recipes' && <Recipes/>
+            }
+
+            {
+              pathname === '/cooking' && <Cooking/>
+            }
+
         </StyledAppHeaderContent>
    
       </StyledAppHeader>
