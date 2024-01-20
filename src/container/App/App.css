@@ -1,0 +1,50 @@
+.sign-in-btn {
+  color: white;
+  border: none;
+  padding: 10px 25px 10px 25px ;
+  background-color: #3B7844;
+  border-radius: 5px;
+  outline: none ;
+  cursor: pointer ;
+}
+
+.sign-in-btn:hover {
+  background-color: rgb(59, 120, 68, 0.8);
+}
+
+.search {
+  cursor: pointer;
+}
+
+.search > i {
+  margin-right: 10px;
+}
+
+.search > input[type=text] {
+  
+  width:  0px;
+  border: none;
+  outline: none;
+  transition: width 0.3s;
+}
+
+.search > input[type=text].open {
+  padding: 5px 10px 5px 10px;
+  width: 200px;
+}
+
+.navigation > ul{
+  display: flex;
+  list-style: none;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.navigation > ul > li{
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+}
+
+.navigation > ul > li:hover {
+  color: rgba(0, 0, 0, 0.3);
+}
