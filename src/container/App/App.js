@@ -1,28 +1,26 @@
 import React from 'react';
 import './App.css';
 import Logo from './logo.png'
-
 import Board_1 from './board_1.gif'
+
+import {
+  StyledAppHeader,
+  StyledAppHeaderNavigationBar,
+  StyledSignInButton,
+  StyledAppHeaderContent,
+  StyledExploreButton,
+} from './App.styled'
 
 function App() {
   const [searchStart, setIsSearchStart] = React.useState(false)
   return (
     <div>
-      <header style={{
-        padding: 60,
-      }}>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}>
+      <StyledAppHeader>
+        <StyledAppHeaderNavigationBar>
           <div>
             <img src={Logo} />
           </div>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}>
+          <div className='navigation-list'>
             <div className='search'><i onClick={() => setIsSearchStart(!searchStart)} className="fas fa-search"></i>
             <input className={searchStart ? 'open' : ''} type='text' placeholder='what you think about?'/>
             </div>
@@ -38,40 +36,18 @@ function App() {
               </ul>
             </div>
             <div>
-              <button className='sign-in-btn' >Sign In</button>
+              <StyledSignInButton >Sign In</StyledSignInButton>
             </div>
           </div>
-        </div>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          marginTop: '220px',
-          alignItems: 'center',
-        }}>
+        </StyledAppHeaderNavigationBar>
+        <StyledAppHeaderContent>
           <div>
-            <div style={{
-              fontSize: '48px',
-              fontWeight: '600',
-
-            }}>Let's Get Cookie</div>
-            <div style={{
-              marginTop: '65px',
-              fontSize: '16px',
-              lineHeight: '32px',
-            }}>
+            <div className='content-title'>Let's Get Cookie</div>
+            <div className='content-subtitle'>
               <div>Explore the best recipes from around the World.</div>
               <div>Make cooking enjoyable again. </div>
             </div>
-            <button style={{
-              marginTop: '65px',
-              padding: '10px 25px 10px 25px',
-              backgroundColor: '#3B7844',
-              border: 'none',
-              color: 'white',
-              borderRadius: '5',
-              outline: 'none',
-              cursor: 'pointer'
-            }}>Explore Recipes</button>
+            <StyledExploreButton>Explore Recipes</StyledExploreButton>
             
           </div>
           <div>
@@ -79,11 +55,12 @@ function App() {
           
             <img src={Board_1} alt="Chess"/>
           </div>
-        </div>
+        </StyledAppHeaderContent>
    
-      </header>
+      </StyledAppHeader>
     </div>
   );
 }
 
 export default App;
+
